@@ -107,7 +107,7 @@ It is set to trigger when the temperature value is greater than 1 (a specific va
 ![image](https://user-images.githubusercontent.com/87741718/189000944-0ca65677-b372-4060-93fe-bb78e07fd25b.png)
 
 In rule action, select SNS and then select the created topic.
-![image](https://user-images.githubusercontent.com/87741718/189000980-99bcae5e-a862-4543-baf8-d2dee1e9c24d.png)
+![image](https://user-images.githubusercontent.com/87741718/189778694-df08a76b-f1b0-4e74-b02f-967786003c31.png)
 
 ### 2.4. Test
 If you activate the rule created by IoT Core while the device is connected, you will receive a notification with a subscription set according to the sql statement.
