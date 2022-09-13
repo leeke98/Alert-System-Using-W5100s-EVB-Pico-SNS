@@ -22,7 +22,8 @@ Set thing name
 Select Auto-generate option
 ![image](https://user-images.githubusercontent.com/87741718/188810363-d48d338d-cbb7-4175-a719-4cc988263054.png)
 
- Create and connect policies for using IoT Core. The policy details are as follows.
+Create and connect policies for using IoT Core. The policy details are as follows. </br>
+If you done [Attach policies to certificate] step, you can create thing. And you must save certificate files.
 ```JSON
 {   
     "Version": "2012-10-17",   
@@ -51,6 +52,7 @@ Select Auto-generate option
 }
 ```
 
+
 #### 2.1.2. Publish MQTT Message
 I used the SDK that connects the RP2040 to AWS, and you can use it by following the [github link](https://github.com/Wiznet/RP2040-HAT-AWS-C/tree/main/examples/aws_iot_mqtt). I changed the thing Name to the thing Name created above.
 ```C
@@ -62,6 +64,25 @@ I used the SDK that connects the RP2040 to AWS, and you can use it by following 
 #define MQTT_PASSWORD NULL 
 #define MQTT_CLIENT_ID "YOUR_THING_NAME"
 ```
+Set up device certificate and keys. </br>
+Put the authentication key saved when creating device in [mqtt_certificate.h] file.
+```c
+uint8_t mqtt_root_ca[] =
+"-----BEGIN CERTIFICATE-----\r\n"
+"...\r\n"
+"-----END CERTIFICATE-----\r\n";
+
+uint8_t mqtt_client_cert[] =
+"-----BEGIN CERTIFICATE-----\r\n"
+"...\r\n"
+"-----END CERTIFICATE-----\r\n";
+
+uint8_t mqtt_private_key[] =
+"-----BEGIN RSA PRIVATE KEY-----\r\n"
+"...\r\n"
+"-----END RSA PRIVATE KEY-----\r\n";
+```
+Build SDK file, and put the permware in your device. </br>
 The message payload currently sent by the W5100S-EVB-Pico is:
 ```JSON
 {"temperature":23, "humidity":25}
